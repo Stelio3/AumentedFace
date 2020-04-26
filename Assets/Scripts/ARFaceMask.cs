@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using GoogleARCore;
 
 public class ARFaceMask : MonoBehaviour
 {
     public GameObject arfacemask;
+    public Text mouthLength;
     private List<AugmentedFace> faces;
     private List<Vector3> vertices;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +32,7 @@ public class ARFaceMask : MonoBehaviour
                 Vector3 mouthSide1 = vertices[62];
                 Vector3 mouthSide2 = vertices[292];
                 float dist = Vector3.Distance(mouthSide1, mouthSide2);
-                print("Distance to other: " + dist);
+                mouthLength.text = "Mouth length: " + dist;
             }
             else 
             {
