@@ -15,6 +15,7 @@ ScriptsOnlyBuild:
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
+    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.SpatialTracking.dll:
     - UnityEngine.SpatialTracking.TrackedPoseDriver
     UnityEngine.UI.dll:
@@ -632,7 +633,7 @@ ScriptsOnlyBuild:
     className: ARCoreSessionConfig
   - hash:
       serializedVersion: 2
-      Hash: 94a66f7d29447edc7d50634536b81e90
+      Hash: 7e32e467479b71c5ffc9cb70ce4de628
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ARFaceMask
