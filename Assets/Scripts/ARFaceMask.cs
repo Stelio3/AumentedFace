@@ -7,15 +7,17 @@ using GoogleARCore;
 public class ARFaceMask : MonoBehaviour
 {
     public GameObject arfacemask;
-    public GameObject go_mouthLenght;
+    public Text txt_mouthDist;
     private List<AugmentedFace> faces;
     private List<Vector3> vertices;
+    private float mouthDist;
 
     // Start is called before the first frame update
     void Start()
     {
         faces = new List<AugmentedFace>();
         vertices = new List<Vector3>();
+        StartCoroutine(castDistance());
     }
 
     // Update is called once per frame
@@ -26,20 +28,22 @@ public class ARFaceMask : MonoBehaviour
         {
             if (face.TrackingState == TrackingState.Tracking)
             {
-                arfacemask.SetActive(false);
-                go_mouthLenght.SetActive(true);
+                arfacemask.SetActive(true);
                 face.GetVertices(vertices);
                 //get vertice 62 and 292
                 Vector3 mouthSide1 = vertices[62];
                 Vector3 mouthSide2 = vertices[292];
-                float dist = Vector3.Distance(mouthSide1, mouthSide2);
-                go_mouthLenght.GetComponent<Text>().text = "Mouth length: " + dist;
+                mouthDist = Vector3.Distance(mouthSide1, mouthSide2);
             }
             else 
             {
                 arfacemask.SetActive(false);
-                go_mouthLenght.SetActive(false);
             }
         }
+    }
+    private IEnumerator castDistance()
+    {
+        txt_mouthDist.text = "Mouth length: " + mouthDist.ToString();
+        yield return null;
     }
 }
