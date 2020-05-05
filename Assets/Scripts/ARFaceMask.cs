@@ -43,7 +43,10 @@ public class ARFaceMask : MonoBehaviour
     }
     private IEnumerator castDistance()
     {
-        txt_mouthDist.text = "Mouth length: " + mouthDist.ToString();
-        yield return null;
+        while (true)
+        {
+            txt_mouthDist.text = "Mouth length: " + mouthDist.ToString();
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 }
