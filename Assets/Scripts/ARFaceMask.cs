@@ -28,7 +28,7 @@ public class ARFaceMask : MonoBehaviour
         {
             if (face.TrackingState == TrackingState.Tracking)
             {
-                arfacemask.SetActive(true);
+                arfacemask.SetActive(false);
                 face.GetVertices(vertices);
                 //get vertice 62 and 292
                 Vector3 mouthSide1 = vertices[62];
