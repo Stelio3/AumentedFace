@@ -7,7 +7,9 @@ using GoogleARCore;
 public class ARFaceMask : MonoBehaviour
 {
     public GameObject arfacemask;
+    public GameObject smilingMouth;
     public Text txt_mouthDist;
+    public float mouthMaxDist;
     private List<AugmentedFace> faces;
     private List<Vector3> vertices;
     private float mouthDist;
@@ -28,12 +30,20 @@ public class ARFaceMask : MonoBehaviour
         {
             if (face.TrackingState == TrackingState.Tracking)
             {
-                arfacemask.SetActive(false);
+                arfacemask.SetActive(true);
                 face.GetVertices(vertices);
                 //get vertice 62 and 292
                 Vector3 mouthSide1 = vertices[62];
                 Vector3 mouthSide2 = vertices[292];
                 mouthDist = Vector3.Distance(mouthSide1, mouthSide2);
+                if(mouthDist > mouthMaxDist)
+                {
+                    smilingMouth.SetActive(true);
+                }
+                else
+                {
+                    smilingMouth.SetActive(false);
+                }
             }
             else 
             {
