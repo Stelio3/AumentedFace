@@ -743,7 +743,7 @@ ScriptsOnlyBuild:
     className: ARCoreSessionConfig
   - hash:
       serializedVersion: 2
-      Hash: efa1d639d273d5766c2b54d845896c42
+      Hash: 010bcc7d2edc41e5e22f7b1aefb9d9a0
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ARFaceMask
@@ -1032,4 +1032,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Proyectos Unity/ARCoreProject/APK'S/SmileBlinkRec.apk
+  playerPath: D:/Users/Pablo_Hdez/Desktop/Mis Videojuegos/Unity/AumentedFaces/arcore.apk
