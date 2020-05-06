@@ -77,10 +77,8 @@ public class ARFaceMask : MonoBehaviour
     {
         while (true)
         {
-            txt_mouthDist.text = "Mouth length: " + mouthDist.ToString();
-            txt_rightEye.text = "EyeRight length: " + rightEyeDist.ToString();
             txt_leftEye.text = "EyeLeft length: " + leftEyeDist.ToString();
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(2f);
         }
     }
 }
