@@ -1032,4 +1032,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: D:/Users/Pablo_Hdez/Desktop/Mis Videojuegos/Unity/AumentedFaces/arcore.apk
+  playerPath: D:/Proyectos Unity/ARCoreProject/APK'S/SmileBlinkRec.apk
