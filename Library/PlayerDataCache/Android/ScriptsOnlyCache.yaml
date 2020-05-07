@@ -743,7 +743,7 @@ ScriptsOnlyBuild:
     className: ARCoreSessionConfig
   - hash:
       serializedVersion: 2
-      Hash: 010bcc7d2edc41e5e22f7b1aefb9d9a0
+      Hash: 64bf490137dc4ce887d3541294d65ed8
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: ARFaceMask
