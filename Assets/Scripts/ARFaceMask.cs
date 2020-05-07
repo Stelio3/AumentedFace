@@ -8,7 +8,7 @@ public class ARFaceMask : MonoBehaviour
 {
     public GameObject arfacemask;
     public GameObject smilingMouth, go_leftEye, go_rightEye;
-    public Text txt_mouthDist, txt_leftEye, txt_rightEye;
+    public Text txt_mouthDist, txt_leftEye, txt_rightEye, txt_info;
 
     private float mouthCalMaxDist, leftEyeCalMaxDist = 1, rightEyeCalMaxDist = 1;
     private List<AugmentedFace> faces;
@@ -22,7 +22,7 @@ public class ARFaceMask : MonoBehaviour
     {
         faces = new List<AugmentedFace>();
         vertices = new List<Vector3>();
-        //StartCoroutine(castDistance());
+        txt_info.text = "Touch with 1 finger and smile to calibrate mouth, 2 fingers and close your eyes to calibrate it or 3 to reset";
     }
 
     // Update is called once per frame
@@ -48,6 +48,16 @@ public class ARFaceMask : MonoBehaviour
                     StartCoroutine(Calibrated("eyes"));
                     isCalibrating = true;
                 }
+            }
+            if(Input.touchCount == 3)
+            {
+                mouthCalMaxDist = 0;
+                leftEyeCalMaxDist = 1;
+                rightEyeCalMaxDist = 1;
+                isCalibrating = false;
+                mouthCalibrated = false;
+                eyesCalibrated = false;
+                txt_info.text = "Touch with 1 finger and smile to calibrate mouth, 2 fingers and close your eyes to calibrate it or 3 to reset";
             }
             if (face.TrackingState == TrackingState.Tracking)
             {
@@ -120,16 +130,9 @@ public class ARFaceMask : MonoBehaviour
             }
         }
     }
-    private IEnumerator castDistance()
-    {
-        while (true)
-        {
-            txt_leftEye.text = "EyeLeft length: " + leftEyeDist.ToString();
-            yield return new WaitForSeconds(2f);
-        }
-    }
     IEnumerator Calibrated(string calType)
     {
+        txt_info.text = "Calibrating...!";
         yield return new WaitForSeconds(3f);
 
         if (calType.Equals("mouth"))
@@ -138,6 +141,12 @@ public class ARFaceMask : MonoBehaviour
             isCalibrating = false;
             s_mouthMaxDist = mouthCalMaxDist.ToString();
             txt_mouthDist.text = s_mouthMaxDist;
+            txt_info.text = "Mouth calibrated!";
+            yield return new WaitForSeconds(1f);
+            if(eyesCalibrated)
+                txt_info.text = "Touch with 3 fingers to reset";
+            else
+                txt_info.text = "Touch with 2 fingers and close your eyes to calibrate it or 3 to reset";
         }
         else if(calType.Equals("eyes"))
         {
@@ -147,7 +156,12 @@ public class ARFaceMask : MonoBehaviour
             s_eyeRightMaxDist = rightEyeCalMaxDist.ToString();
             txt_leftEye.text = s_eyeLeftMaxDist;
             txt_rightEye.text = s_eyeRightMaxDist;
+            txt_info.text = "Eyes calibrated!";
+            yield return new WaitForSeconds(1f);
+            if (mouthCalibrated)
+                txt_info.text = "Touch with 3 fingers to reset";
+            else
+                txt_info.text = "Touch with 1 fingers and smile to calibrate mouth or 3 to reset";
         }
-        
     }
 }
